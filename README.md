@@ -1,5 +1,3 @@
-# Project Sistem-manajemen-keuangan
-
 ## Project Structure
 ```
 sistem-keuangan-1
