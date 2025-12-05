@@ -4,9 +4,7 @@ const bodyParser = require('body-parser');
 const db = require('./config/db');
 
 const app = express();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Initialize the database
 (async () => {
@@ -24,6 +22,8 @@ app.get('/', (req, res) => res.json({ status: 'ok', message: 'API ready' }));
 app.use('/transactions', require('./routes/transactions'));
 app.use('/accounts', require('./routes/accounts'));
 app.use('/admin', require('./routes/admin'));
+const historyRouter = require('./routes/history');
+app.use('/transaction-history', historyRouter);
 
 // Error handler
 app.use((err, req, res, next) => {

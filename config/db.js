@@ -1,20 +1,27 @@
-const mongoose = require('mongoose');
+require('dotenv').config();
+const mysql = require('mysql2/promise');
 
-const dbURI = process.env.DB_URI || 'mongodb://localhost:27017/sistem-keuangan';
+let pool;
 
-const init = async () => {
-  try {
-    await mongoose.connect(dbURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Database connected successfully');
-  } catch (error) {
-    console.error('Database connection error:', error);
-    throw error;
-  }
-};
+async function init() {
+  if (pool) return pool;
+  
+  pool = mysql.createPool({
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'sistem_keuangan',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+  });
+  
+  // Test connection
+  await pool.query('SELECT 1');
+  return pool;
+}
 
-module.exports = {
-  init,
+module.exports = { 
+  init, 
+  pool: () => pool 
 };
