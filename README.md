@@ -1,14 +1,4 @@
-# Sistem Keuangan Project
-
-## Overview
-Sistem Keuangan is a financial management application that allows users to track their income and expenses. The application provides features for managing transactions, including categorization and detailed notes.
-
-## Features
-- User account management
-- Transaction management (income and expenses)
-- Categorization of transactions (debit, card, e-wallet)
-- Detailed notes for each transaction
-- Date tracking for transactions
+# Project Sistem-manajemen-keuangan
 
 ## Project Structure
 ```
@@ -34,29 +24,3 @@ sistem-keuangan-1
 │   └── transactionService.js  # Business logic for transactions
 └── README.md            # Project documentation
 ```
-
-## Setup Instructions
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd sistem-keuangan-1
-   ```
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Create a `.env` file in the root directory and add your environment variables (e.g., database connection strings).
-5. Start the server:
-   ```
-   node server.js
-   ```
-
-## Usage
-- Access the API at `http://localhost:3000`.
-- Use the provided routes to manage accounts and transactions.
-
-## Contributing
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
